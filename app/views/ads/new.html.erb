@@ -1,0 +1,17 @@
+<h1 class= "title">Create a new post</h1>
+
+<%= form_for(@ad, html: {multipart: true}) do |f| %>
+	<p>
+		<%= f.label(:text) %>
+		<%= f.text_area(:text) %>
+		<%= f.label(:keywords) %>
+		<%= f.text_field(:keywords) %>
+	</p>
+	<p>
+		<%= f.label(:image) %>
+		<%= f.file_field(:image) %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</P>
+<% end %>

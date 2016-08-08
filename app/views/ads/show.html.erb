@@ -1,0 +1,10 @@
+<h1 class= "title">Newest Post</h1>
+
+<div class = 'post_text'>
+<p><%= @ad.text %></p>
+<% if @ad.image? %>
+	<%= image_tag @ad.image.url(:medium) %>
+<% end %>
+<p><%= edit_ad_link(@ad) %></p>
+<p><%= link_to("Delete Post", ad_path, method: :delete) %></p>
+</div>

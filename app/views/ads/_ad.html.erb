@@ -1,0 +1,12 @@
+<div class = 'post_text'>
+	<% if ad.image? %>
+		<%= link_to((image_tag ad.image.url(:medium)), ad) %><br>
+	<% end %>
+	<%= ad.post_and_user %>
+	<% if current_user == ad.user %>
+		<%=	link_to("Edit This Post", edit_ad_url(ad)) %>
+		<%= link_to("Delete Post", ad_url(ad), method: :delete) %>
+	<% else %>
+		<%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: ad.user.id), method: 'post'%>
+	<% end %>
+</div>

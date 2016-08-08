@@ -1,0 +1,25 @@
+<h1 class= "title">Want To Trade:</h1>
+
+<div class = "search_form">
+<%= form_tag(ads_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+<%= submit_tag "Search", name: nil %>
+<% end %>
+</div>
+
+
+
+<div class = "empty_error">
+  <% if params[:search] %>
+    <% if @searched_ads.empty? %>
+      <h4 class= "title">There are no posts containing the term <%= params[:search] %>.</h4>
+</div>
+      <h2 class= "title">Recent Posts</h2>
+      <%= render(@recent_ads) %>
+    <% else %>
+      <%= render(@searched_ads) %>
+    <% end %>
+  <% else %>
+    <h2 class= "title">Recent Posts</h2>
+    <%= render(@recent_ads) %>
+  <% end %>

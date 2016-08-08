@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Want To Trade</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<header>
+	<ul>
+		
+		<% if user_signed_in? %>
+			<li>Logged in as <%= current_user.name %></li>
+			<li><%= link_to('Sign Out', destroy_user_session_url, method: :delete) %></li>
+		<% else %>
+			<li>You are not signed in</li>
+			<li><%= link_to('Sign In/Sign Up', new_user_session_url) %></li>
+		<% end %>
+
+		<li><%= link_to('My Page', current_user) %>
+		<li><%= link_to('Home', ads_url) %></li>
+		<li><%= link_to('Create new posting', new_ad_url) %></li>
+		<li><%= link_to('Find a Member', users_url) %></li>
+		<li><%= link_to("Inbox", conversations_url) %></li>
+	</ul>
+</header>
+
+<div class = "flash_msg">
+<%= flash[:notice] if flash[:notice] %>
+<%= flash[:alert] if flash[:alert] %>
+</div>
+
+<%= yield %>
+
+</body>
+</html>

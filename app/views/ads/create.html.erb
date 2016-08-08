@@ -1,0 +1,18 @@
+<h1 class= "title">There was an error!</h1>
+
+<% @ad.errors.full_messages.each do |message| %>
+	<p><%= message %></p>
+<% end %>
+
+<%= form_for(@ad) do |f| %>
+	<p>
+		<%= f.label(:text) %>
+		<%= f.text_field(:text) %>
+		<%= f.label(:keywords) %>
+		<%= f.text_field(:keywords) %>
+	</p>
+	<%= image_tag @ad.image.url(:medium) %>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
