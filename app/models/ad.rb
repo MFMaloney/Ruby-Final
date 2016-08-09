@@ -27,7 +27,11 @@ class Ad < ActiveRecord::Base
 	end
 
 	def self.search(search)
-		search = "%#{search.downcase}%"
-  		where("LCASE(text) LIKE ? OR LCASE(keywords) LIKE ?", search, search)
+      if search.present?
+		  search = "%#{search.downcase}%"
+  		  where("LOWER(text) LIKE ? OR LOWER(keywords) LIKE ?", search, search)
+      else
+        none
+      end
 	end
 end
