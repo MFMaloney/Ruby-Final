@@ -15,8 +15,8 @@ class Ad < ActiveRecord::Base
    s3_credentials: Proc.new{|a| a.instance.s3_credentials }
    		def s3_credentials
    			{bucket: "mikesbucket88",
-   			 access_key_id: "AKIAI3A5QEQUPAHATYDQ",
-   	       secret_access_key: "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"}
+   			 access_key_id: "xxx",
+   	       secret_access_key: "xxx"}
    	    end
    
    validates_attachment_content_type :image,
